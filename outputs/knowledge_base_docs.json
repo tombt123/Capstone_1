@@ -1,0 +1,690 @@
+[
+ {
+  "id": "RB-01",
+  "type": "runbook",
+  "title": "High CPU Utilization - Root Cause Analysis",
+  "text": "When CPU utilization exceeds 85%, it typically indicates one of the following root causes:\n1. Inefficient database queries causing excessive processing\n2. Memory leaks leading to garbage collection overhead\n3. Sudden spike in transaction volume during peak hours\n4. Malicious activity or DDoS attack\n\nResolution Steps:\n- Identify top CPU-consuming processes using system monitoring tools\n- Review recent code deployments for performance regressions\n- Scale horizontally by adding more application servers\n- Implement query optimization and caching strategies"
+ },
+ {
+  "id": "RB-02",
+  "type": "runbook",
+  "title": "Database Connection Pool Exhaustion",
+  "text": "Database connection pool exhaustion occurs when all available connections are in use.\nCommon causes:\n1. Connection leaks in application code\n2. Long-running transactions not being committed\n3. Insufficient pool size for current load\n4. Database performance degradation\n\nResolution Steps:\n- Increase connection pool size temporarily\n- Review application logs for connection leak patterns\n- Implement connection timeout policies\n- Optimize slow-running queries\n- Consider implementing connection pooling at the application layer"
+ },
+ {
+  "id": "RB-03",
+  "type": "runbook",
+  "title": "NEFT Transaction Failures",
+  "text": "NEFT transaction failures can be caused by:\n1. Payment gateway timeouts or unavailability\n2. Invalid beneficiary account details\n3. Network connectivity issues with external systems\n4. Database transaction deadlocks\n\nResolution Steps:\n- Check payment gateway status and connectivity\n- Verify beneficiary account validation logic\n- Review network logs for connectivity issues\n- Implement retry logic with exponential backoff\n- Enable transaction monitoring and alerting"
+ },
+ {
+  "id": "RB-04",
+  "type": "runbook",
+  "title": "Memory Usage Spike",
+  "text": "Sudden memory usage spikes indicate:\n1. Memory leaks in application code\n2. Large object allocations without proper cleanup\n3. Caching issues causing memory bloat\n4. Insufficient heap size configuration\n\nResolution Steps:\n- Perform heap dump analysis to identify memory leaks\n- Review recent code changes for memory-intensive operations\n- Implement proper object disposal and garbage collection\n- Tune JVM/runtime memory parameters\n- Consider implementing memory-efficient data structures"
+ },
+ {
+  "id": "RB-05",
+  "type": "runbook",
+  "title": "API Rate Limit Exceeded",
+  "text": "API rate limit exceeded errors occur when:\n1. Legitimate spike in user traffic\n2. Misconfigured client applications making excessive requests\n3. Potential bot or scraping activity\n4. Insufficient rate limit configuration\n\nResolution Steps:\n- Analyze request patterns to identify source\n- Implement dynamic rate limiting based on user tier\n- Add request throttling and queue management\n- Consider implementing API gateway with rate limiting\n- Monitor and adjust rate limits based on capacity"
+ },
+ {
+  "id": "INC000012",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-20 11:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-20 11:00. CPU 87.7%, memory 87.7%, DB connection pool 93.5%, network 326 Mbps, application error rate 11, NEFT success 87.2%, IMPS 99.8%, RTGS 99.3%, avg processing time 428 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-20 11:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000014",
+  "type": "incident",
+  "title": "Resource_Warning 2025-10-20 13:00",
+  "text": "Resource Warning incident (Medium severity) at 2025-10-20 13:00. CPU 75.2%, memory 62.1%, DB connection pool 53.8%, network 363 Mbps, application error rate 4, NEFT success 98.6%, IMPS 99.9%, RTGS 99.8%, avg processing time 433 ms. Symptoms: elevated but below critical thresholds.",
+  "meta": {
+   "timestamp": "2025-10-20 13:00:00",
+   "severity": "Medium",
+   "flags": []
+  }
+ },
+ {
+  "id": "INC000015",
+  "type": "incident",
+  "title": "Resource_Warning 2025-10-20 14:00",
+  "text": "Resource Warning incident (Medium severity) at 2025-10-20 14:00. CPU 75.5%, memory 65.7%, DB connection pool 53.1%, network 324 Mbps, application error rate 3, NEFT success 97.0%, IMPS 99.5%, RTGS 99.1%, avg processing time 448 ms. Symptoms: elevated but below critical thresholds.",
+  "meta": {
+   "timestamp": "2025-10-20 14:00:00",
+   "severity": "Medium",
+   "flags": []
+  }
+ },
+ {
+  "id": "INC000022",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-20 21:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-20 21:00. CPU 94.2%, memory 82.6%, DB connection pool 85.1%, network 218 Mbps, application error rate 19, NEFT success 86.8%, IMPS 98.4%, RTGS 99.4%, avg processing time 100 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-20 21:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000033",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-21 08:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-21 08:00. CPU 94.2%, memory 87.5%, DB connection pool 90.6%, network 217 Mbps, application error rate 12, NEFT success 87.1%, IMPS 99.7%, RTGS 99.8%, avg processing time 100 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-21 08:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000044",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-21 19:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-21 19:00. CPU 92.7%, memory 87.1%, DB connection pool 88.4%, network 162 Mbps, application error rate 19, NEFT success 86.6%, IMPS 99.6%, RTGS 100.0%, avg processing time 100 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-21 19:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000049",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-22 00:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-22 00:00. CPU 93.7%, memory 82.0%, DB connection pool 87.4%, network 201 Mbps, application error rate 19, NEFT success 88.0%, IMPS 99.6%, RTGS 99.1%, avg processing time 113 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-22 00:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000050",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-22 01:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-22 01:00. CPU 91.4%, memory 82.3%, DB connection pool 93.7%, network 189 Mbps, application error rate 15, NEFT success 86.1%, IMPS 99.2%, RTGS 99.7%, avg processing time 103 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-22 01:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000051",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-22 02:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-22 02:00. CPU 87.6%, memory 81.6%, DB connection pool 86.4%, network 226 Mbps, application error rate 12, NEFT success 85.1%, IMPS 98.3%, RTGS 99.2%, avg processing time 100 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-22 02:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000055",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-22 06:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-22 06:00. CPU 85.4%, memory 88.9%, DB connection pool 92.4%, network 228 Mbps, application error rate 14, NEFT success 88.4%, IMPS 99.2%, RTGS 99.2%, avg processing time 100 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-22 06:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000060",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-22 11:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-22 11:00. CPU 89.5%, memory 81.4%, DB connection pool 87.9%, network 328 Mbps, application error rate 15, NEFT success 88.1%, IMPS 99.3%, RTGS 99.3%, avg processing time 413 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-22 11:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000079",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-23 06:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-23 06:00. CPU 88.5%, memory 89.0%, DB connection pool 92.1%, network 249 Mbps, application error rate 16, NEFT success 85.6%, IMPS 98.9%, RTGS 99.8%, avg processing time 167 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-23 06:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000084",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-23 11:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-23 11:00. CPU 86.6%, memory 89.0%, DB connection pool 92.1%, network 317 Mbps, application error rate 15, NEFT success 89.8%, IMPS 98.3%, RTGS 99.7%, avg processing time 381 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-23 11:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000085",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-23 12:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-23 12:00. CPU 88.7%, memory 80.8%, DB connection pool 85.5%, network 376 Mbps, application error rate 11, NEFT success 85.1%, IMPS 98.2%, RTGS 99.8%, avg processing time 379 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-23 12:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000087",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-23 14:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-23 14:00. CPU 85.7%, memory 84.1%, DB connection pool 89.1%, network 347 Mbps, application error rate 11, NEFT success 89.7%, IMPS 99.0%, RTGS 99.0%, avg processing time 361 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-23 14:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000088",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-23 15:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-23 15:00. CPU 87.9%, memory 86.9%, DB connection pool 86.1%, network 328 Mbps, application error rate 19, NEFT success 85.1%, IMPS 98.4%, RTGS 99.5%, avg processing time 379 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-23 15:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000090",
+  "type": "incident",
+  "title": "Resource_Warning 2025-10-23 17:00",
+  "text": "Resource Warning incident (Medium severity) at 2025-10-23 17:00. CPU 76.4%, memory 61.4%, DB connection pool 60.5%, network 400 Mbps, application error rate 1, NEFT success 97.5%, IMPS 98.2%, RTGS 99.6%, avg processing time 470 ms. Symptoms: elevated but below critical thresholds.",
+  "meta": {
+   "timestamp": "2025-10-23 17:00:00",
+   "severity": "Medium",
+   "flags": []
+  }
+ },
+ {
+  "id": "INC000100",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-24 03:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-24 03:00. CPU 91.0%, memory 85.9%, DB connection pool 92.5%, network 226 Mbps, application error rate 10, NEFT success 89.3%, IMPS 98.7%, RTGS 99.9%, avg processing time 113 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-24 03:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000110",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-24 13:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-24 13:00. CPU 89.7%, memory 83.6%, DB connection pool 93.1%, network 384 Mbps, application error rate 15, NEFT success 85.7%, IMPS 99.0%, RTGS 99.7%, avg processing time 437 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-24 13:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000117",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-24 20:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-24 20:00. CPU 91.6%, memory 89.9%, DB connection pool 86.7%, network 179 Mbps, application error rate 10, NEFT success 88.6%, IMPS 99.5%, RTGS 99.1%, avg processing time 100 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-24 20:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000121",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-25 00:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-25 00:00. CPU 87.7%, memory 89.0%, DB connection pool 88.8%, network 240 Mbps, application error rate 14, NEFT success 88.8%, IMPS 98.9%, RTGS 99.8%, avg processing time 100 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-25 00:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000125",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-25 04:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-25 04:00. CPU 94.8%, memory 87.8%, DB connection pool 85.9%, network 248 Mbps, application error rate 15, NEFT success 86.5%, IMPS 100.0%, RTGS 99.6%, avg processing time 102 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-25 04:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000134",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-25 13:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-25 13:00. CPU 87.7%, memory 88.5%, DB connection pool 93.1%, network 270 Mbps, application error rate 12, NEFT success 89.5%, IMPS 99.0%, RTGS 99.0%, avg processing time 188 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-25 13:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000136",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-25 15:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-25 15:00. CPU 89.6%, memory 84.8%, DB connection pool 93.5%, network 297 Mbps, application error rate 18, NEFT success 88.0%, IMPS 99.5%, RTGS 99.8%, avg processing time 238 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-25 15:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000138",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-25 17:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-25 17:00. CPU 94.2%, memory 88.7%, DB connection pool 85.5%, network 233 Mbps, application error rate 14, NEFT success 87.4%, IMPS 99.4%, RTGS 99.9%, avg processing time 154 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-25 17:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000154",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-26 09:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-26 09:00. CPU 88.0%, memory 82.2%, DB connection pool 88.5%, network 277 Mbps, application error rate 19, NEFT success 85.8%, IMPS 98.8%, RTGS 99.5%, avg processing time 204 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-26 09:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000156",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-26 11:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-26 11:00. CPU 94.5%, memory 82.8%, DB connection pool 93.8%, network 256 Mbps, application error rate 16, NEFT success 85.4%, IMPS 98.4%, RTGS 99.8%, avg processing time 175 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-26 11:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000165",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-26 20:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-26 20:00. CPU 87.5%, memory 81.3%, DB connection pool 92.5%, network 189 Mbps, application error rate 15, NEFT success 88.4%, IMPS 99.6%, RTGS 99.9%, avg processing time 100 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-26 20:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "INC000167",
+  "type": "incident",
+  "title": "Resource_Exhaustion 2025-10-26 22:00",
+  "text": "Resource Exhaustion incident (Critical severity) at 2025-10-26 22:00. CPU 86.1%, memory 84.4%, DB connection pool 85.2%, network 209 Mbps, application error rate 12, NEFT success 88.3%, IMPS 99.0%, RTGS 99.7%, avg processing time 121 ms. Symptoms: high CPU utilization; memory usage spike; database connection pool exhaustion; NEFT transaction failures gateway timeout; high application error rate.",
+  "meta": {
+   "timestamp": "2025-10-26 22:00:00",
+   "severity": "Critical",
+   "flags": [
+    "high CPU utilization",
+    "memory usage spike",
+    "database connection pool exhaustion",
+    "NEFT transaction failures gateway timeout",
+    "high application error rate"
+   ]
+  }
+ },
+ {
+  "id": "PAT-01",
+  "type": "pattern",
+  "title": "Resource exhaustion pattern: all critical incidents",
+  "text": "Historical incident pattern: 26 critical hours out of 168 observed hours (15%). Median metrics during critical hours: CPU 89%, memory 85%, DB pool 89%, error rate 15, NEFT success 87%. In every critical hour CPU, memory and DB pool were all elevated together (resource exhaustion) while IMPS and RTGS success rates stayed normal - the payment impact was concentrated on NEFT. Critical hours occurred at all times of day, not only during business peak, so peak load is not the only trigger."
+ },
+ {
+  "id": "BASE-00",
+  "type": "pattern",
+  "title": "Normal operating baseline: weekday off-hours",
+  "text": "Normal baseline on weekday off-hours: CPU 40% (max 47), memory 36%, DB pool 32%, network 199 Mbps, latency 114 ms, 4005 transactions/hour, NEFT success 98.0%."
+ },
+ {
+  "id": "BASE-01",
+  "type": "pattern",
+  "title": "Normal operating baseline: weekday business hours (09-18)",
+  "text": "Normal baseline on weekday business hours (09-18): CPU 70% (max 78), memory 63%, DB pool 56%, network 350 Mbps, latency 400 ms, 6985 transactions/hour, NEFT success 98.0%."
+ },
+ {
+  "id": "BASE-10",
+  "type": "pattern",
+  "title": "Normal operating baseline: weekend off-hours",
+  "text": "Normal baseline on weekend off-hours: CPU 40% (max 49), memory 36%, DB pool 32%, network 201 Mbps, latency 114 ms, 3991 transactions/hour, NEFT success 98.0%."
+ },
+ {
+  "id": "BASE-11",
+  "type": "pattern",
+  "title": "Normal operating baseline: weekend business hours (09-18)",
+  "text": "Normal baseline on weekend business hours (09-18): CPU 50% (max 57), memory 45%, DB pool 40%, network 251 Mbps, latency 201 ms, 4996 transactions/hour, NEFT success 98.1%."
+ },
+ {
+  "id": "LOG-00",
+  "type": "log_pattern",
+  "title": "Log pattern: neft transaction failed transaction id txnid reason",
+  "text": "Log pattern (Business KPI issue), dominant level ERROR: \"ERROR: NEFT transaction failed. Transaction ID: TXN399. Reason: Gateway timeout\". Seen 292 times in the week (5.9% of logs). Key terms: neft transaction, neft, gateway timeout, reason gateway, transaction, gateway.",
+  "meta": {
+   "group": "Business KPI issue"
+  }
+ },
+ {
+  "id": "LOG-01",
+  "type": "log_pattern",
+  "title": "Log pattern: cache refresh completed in",
+  "text": "Log pattern (Informational / Normal), dominant level INFO: \"INFO: Cache refresh completed in 63ms\". Seen 330 times in the week (6.6% of logs). Key terms: refresh completed, refresh, in, completed in, cache, cache refresh.",
+  "meta": {
+   "group": "Informational / Normal"
+  }
+ },
+ {
+  "id": "LOG-02",
+  "type": "log_pattern",
+  "title": "Log pattern: high cpu utilization detected on server srv",
+  "text": "Log pattern (Infrastructure issue), dominant level ERROR: \"ERROR: High CPU utilization detected on server srv-15. Current: 407%\". Seen 304 times in the week (6.1% of logs). Key terms: utilization detected, utilization, high cpu, high, cpu utilization, cpu.",
+  "meta": {
+   "group": "Infrastructure issue"
+  }
+ },
+ {
+  "id": "LOG-03",
+  "type": "log_pattern",
+  "title": "Log pattern: database connection pool exhausted connections",
+  "text": "Log pattern (Infrastructure issue), dominant level ERROR: \"ERROR: Database connection pool exhausted. Connections: 492\". Seen 283 times in the week (5.7% of logs). Key terms: pool exhausted, pool, exhausted connections, exhausted, connections, database connection.",
+  "meta": {
+   "group": "Infrastructure issue"
+  }
+ },
+ {
+  "id": "LOG-04",
+  "type": "log_pattern",
+  "title": "Log pattern: api rate limit exceeded for endpoint /api/transactions",
+  "text": "Log pattern (Business KPI issue), dominant level ERROR: \"ERROR: API rate limit exceeded for endpoint /api/transactions\". Seen 277 times in the week (5.5% of logs). Key terms: api, api transactions, rate limit, for endpoint, exceeded for, limit exceeded.",
+  "meta": {
+   "group": "Business KPI issue"
+  }
+ },
+ {
+  "id": "LOG-05",
+  "type": "log_pattern",
+  "title": "Log pattern: network timeout on srv latency",
+  "text": "Log pattern (Infrastructure issue), dominant level ERROR: \"CRITICAL: Network timeout on srv-10. Latency: 128ms\". Seen 294 times in the week (5.9% of logs). Key terms: srv latency, timeout on, network timeout, latency, network, timeout.",
+  "meta": {
+   "group": "Infrastructure issue"
+  }
+ },
+ {
+  "id": "LOG-06",
+  "type": "log_pattern",
+  "title": "Log pattern: customer authentication failed user id usrid",
+  "text": "Log pattern (Business KPI issue), dominant level ERROR: \"ERROR: Customer authentication failed. User ID: USR53\". Seen 286 times in the week (5.7% of logs). Key terms: customer authentication, customer, authentication, authentication failed, failed user, id usrid.",
+  "meta": {
+   "group": "Business KPI issue"
+  }
+ },
+ {
+  "id": "LOG-07",
+  "type": "log_pattern",
+  "title": "Log pattern: container srv restarting due to oom",
+  "text": "Log pattern (Infrastructure issue), dominant level WARNING: \"WARNING: Container srv-10 restarting due to OOM\". Seen 278 times in the week (5.6% of logs). Key terms: container, container srv, due to, due, oom, restarting due.",
+  "meta": {
+   "group": "Infrastructure issue"
+  }
+ },
+ {
+  "id": "LOG-08",
+  "type": "log_pattern",
+  "title": "Log pattern: payment gateway response time exceeded sla time",
+  "text": "Log pattern (Business KPI issue), dominant level WARNING: \"WARNING: Payment gateway response time exceeded SLA. Time: 688ms\". Seen 278 times in the week (5.6% of logs). Key terms: time, gateway response, payment gateway, payment, response, response time.",
+  "meta": {
+   "group": "Business KPI issue"
+  }
+ },
+ {
+  "id": "LOG-09",
+  "type": "log_pattern",
+  "title": "Log pattern: duplicate transaction detected transaction id txnid",
+  "text": "Log pattern (Business KPI issue), dominant level WARNING: \"WARNING: Duplicate transaction detected. Transaction ID: TXN483\". Seen 337 times in the week (6.8% of logs). Key terms: transaction, transaction detected, detected transaction, duplicate transaction, duplicate, detected.",
+  "meta": {
+   "group": "Business KPI issue"
+  }
+ },
+ {
+  "id": "LOG-10",
+  "type": "log_pattern",
+  "title": "Log pattern: transaction processed successfully id txnid",
+  "text": "Log pattern (Informational / Normal), dominant level INFO: \"INFO: Transaction processed successfully. ID: TXN633\". Seen 322 times in the week (6.5% of logs). Key terms: successfully id, transaction processed, processed, processed successfully, successfully, transaction.",
+  "meta": {
+   "group": "Informational / Normal"
+  }
+ },
+ {
+  "id": "LOG-11",
+  "type": "log_pattern",
+  "title": "Log pattern: disk i/o bottleneck detected on srv",
+  "text": "Log pattern (Infrastructure issue), dominant level ERROR: \"ERROR: Disk I/O bottleneck detected on srv-18\". Seen 284 times in the week (5.7% of logs). Key terms: bottleneck, bottleneck detected, disk, disk bottleneck, detected on, on srv.",
+  "meta": {
+   "group": "Infrastructure issue"
+  }
+ },
+ {
+  "id": "LOG-12",
+  "type": "log_pattern",
+  "title": "Log pattern: database backup completed successfully",
+  "text": "Log pattern (Informational / Normal), dominant level INFO: \"INFO: Database backup completed successfully\". Seen 287 times in the week (5.8% of logs). Key terms: completed successfully, database backup, backup completed, backup, database, successfully.",
+  "meta": {
+   "group": "Informational / Normal"
+  }
+ },
+ {
+  "id": "LOG-13",
+  "type": "log_pattern",
+  "title": "Log pattern: memory usage approaching threshold on srv current",
+  "text": "Log pattern (Infrastructure issue), dominant level WARNING: \"WARNING: Memory usage approaching threshold on srv-07. Current: 413%\". Seen 296 times in the week (5.9% of logs). Key terms: usage approaching, usage, memory, memory usage, approaching threshold, approaching.",
+  "meta": {
+   "group": "Infrastructure issue"
+  }
+ },
+ {
+  "id": "LOG-14",
+  "type": "log_pattern",
+  "title": "Log pattern: user login successful user id usrid",
+  "text": "Log pattern (Informational / Normal), dominant level INFO: \"INFO: User login successful. User ID: USR270\". Seen 300 times in the week (6.0% of logs). Key terms: user, user login, login successful, login, successful user, successful.",
+  "meta": {
+   "group": "Informational / Normal"
+  }
+ },
+ {
+  "id": "LOG-15",
+  "type": "log_pattern",
+  "title": "Log pattern: rtgs transaction failed transaction id txnid reason",
+  "text": "Log pattern (Business KPI issue), dominant level ERROR: \"ERROR: RTGS transaction failed. Transaction ID: TXN183. Reason: Insufficient funds\". Seen 279 times in the week (5.6% of logs). Key terms: rtgs transaction, rtgs, reason insufficient, insufficient funds, insufficient, funds.",
+  "meta": {
+   "group": "Business KPI issue"
+  }
+ },
+ {
+  "id": "LOG-16",
+  "type": "log_pattern",
+  "title": "Log pattern: imps transaction failed transaction id txnid reason",
+  "text": "Log pattern (Business KPI issue), dominant level ERROR: \"ERROR: IMPS transaction failed. Transaction ID: TXN258. Reason: Invalid account\". Seen 264 times in the week (5.3% of logs). Key terms: invalid, invalid account, imps, reason invalid, account, imps transaction.",
+  "meta": {
+   "group": "Business KPI issue"
+  }
+ }
+]

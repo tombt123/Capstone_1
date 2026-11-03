@@ -1,0 +1,301 @@
+{
+  "best_k": 17,
+  "silhouette": 1.0,
+  "purity": 1.0,
+  "group_counts": {
+    "Business KPI issue": 2013,
+    "Infrastructure issue": 1739,
+    "Informational / Normal": 1239
+  },
+  "clusters": [
+    {
+      "cluster": 0,
+      "size": 292,
+      "top_terms": [
+        "neft transaction",
+        "neft",
+        "gateway timeout",
+        "reason gateway",
+        "transaction",
+        "gateway"
+      ],
+      "group": "Business KPI issue",
+      "dominant_level": "ERROR",
+      "example_pattern": "neft transaction failed transaction id txnid reason gateway timeout",
+      "example_message": "ERROR: NEFT transaction failed. Transaction ID: TXN399. Reason: Gateway timeout",
+      "name": "neft transaction failed transaction id txnid reason"
+    },
+    {
+      "cluster": 1,
+      "size": 330,
+      "top_terms": [
+        "refresh completed",
+        "refresh",
+        "in",
+        "completed in",
+        "cache",
+        "cache refresh"
+      ],
+      "group": "Informational / Normal",
+      "dominant_level": "INFO",
+      "example_pattern": "cache refresh completed in",
+      "example_message": "INFO: Cache refresh completed in 63ms",
+      "name": "cache refresh completed in"
+    },
+    {
+      "cluster": 2,
+      "size": 304,
+      "top_terms": [
+        "utilization detected",
+        "utilization",
+        "high cpu",
+        "high",
+        "cpu utilization",
+        "cpu"
+      ],
+      "group": "Infrastructure issue",
+      "dominant_level": "ERROR",
+      "example_pattern": "high cpu utilization detected on server srv current",
+      "example_message": "ERROR: High CPU utilization detected on server srv-15. Current: 407%",
+      "name": "high cpu utilization detected on server srv"
+    },
+    {
+      "cluster": 3,
+      "size": 283,
+      "top_terms": [
+        "pool exhausted",
+        "pool",
+        "exhausted connections",
+        "exhausted",
+        "connections",
+        "database connection"
+      ],
+      "group": "Infrastructure issue",
+      "dominant_level": "ERROR",
+      "example_pattern": "database connection pool exhausted connections",
+      "example_message": "ERROR: Database connection pool exhausted. Connections: 492",
+      "name": "database connection pool exhausted connections"
+    },
+    {
+      "cluster": 4,
+      "size": 277,
+      "top_terms": [
+        "api",
+        "api transactions",
+        "rate limit",
+        "for endpoint",
+        "exceeded for",
+        "limit exceeded"
+      ],
+      "group": "Business KPI issue",
+      "dominant_level": "ERROR",
+      "example_pattern": "api rate limit exceeded for endpoint /api/transactions",
+      "example_message": "ERROR: API rate limit exceeded for endpoint /api/transactions",
+      "name": "api rate limit exceeded for endpoint /api/transactions"
+    },
+    {
+      "cluster": 5,
+      "size": 294,
+      "top_terms": [
+        "srv latency",
+        "timeout on",
+        "network timeout",
+        "latency",
+        "network",
+        "timeout"
+      ],
+      "group": "Infrastructure issue",
+      "dominant_level": "ERROR",
+      "example_pattern": "network timeout on srv latency",
+      "example_message": "CRITICAL: Network timeout on srv-10. Latency: 128ms",
+      "name": "network timeout on srv latency"
+    },
+    {
+      "cluster": 6,
+      "size": 286,
+      "top_terms": [
+        "customer authentication",
+        "customer",
+        "authentication",
+        "authentication failed",
+        "failed user",
+        "id usrid"
+      ],
+      "group": "Business KPI issue",
+      "dominant_level": "ERROR",
+      "example_pattern": "customer authentication failed user id usrid",
+      "example_message": "ERROR: Customer authentication failed. User ID: USR53",
+      "name": "customer authentication failed user id usrid"
+    },
+    {
+      "cluster": 7,
+      "size": 278,
+      "top_terms": [
+        "container",
+        "container srv",
+        "due to",
+        "due",
+        "oom",
+        "restarting due"
+      ],
+      "group": "Infrastructure issue",
+      "dominant_level": "WARNING",
+      "example_pattern": "container srv restarting due to oom",
+      "example_message": "WARNING: Container srv-10 restarting due to OOM",
+      "name": "container srv restarting due to oom"
+    },
+    {
+      "cluster": 8,
+      "size": 278,
+      "top_terms": [
+        "time",
+        "gateway response",
+        "payment gateway",
+        "payment",
+        "response",
+        "response time"
+      ],
+      "group": "Business KPI issue",
+      "dominant_level": "WARNING",
+      "example_pattern": "payment gateway response time exceeded sla time",
+      "example_message": "WARNING: Payment gateway response time exceeded SLA. Time: 688ms",
+      "name": "payment gateway response time exceeded sla time"
+    },
+    {
+      "cluster": 9,
+      "size": 337,
+      "top_terms": [
+        "transaction",
+        "transaction detected",
+        "detected transaction",
+        "duplicate transaction",
+        "duplicate",
+        "detected"
+      ],
+      "group": "Business KPI issue",
+      "dominant_level": "WARNING",
+      "example_pattern": "duplicate transaction detected transaction id txnid",
+      "example_message": "WARNING: Duplicate transaction detected. Transaction ID: TXN483",
+      "name": "duplicate transaction detected transaction id txnid"
+    },
+    {
+      "cluster": 10,
+      "size": 322,
+      "top_terms": [
+        "successfully id",
+        "transaction processed",
+        "processed",
+        "processed successfully",
+        "successfully",
+        "transaction"
+      ],
+      "group": "Informational / Normal",
+      "dominant_level": "INFO",
+      "example_pattern": "transaction processed successfully id txnid",
+      "example_message": "INFO: Transaction processed successfully. ID: TXN633",
+      "name": "transaction processed successfully id txnid"
+    },
+    {
+      "cluster": 11,
+      "size": 284,
+      "top_terms": [
+        "bottleneck",
+        "bottleneck detected",
+        "disk",
+        "disk bottleneck",
+        "detected on",
+        "on srv"
+      ],
+      "group": "Infrastructure issue",
+      "dominant_level": "ERROR",
+      "example_pattern": "disk i/o bottleneck detected on srv",
+      "example_message": "ERROR: Disk I/O bottleneck detected on srv-18",
+      "name": "disk i/o bottleneck detected on srv"
+    },
+    {
+      "cluster": 12,
+      "size": 287,
+      "top_terms": [
+        "completed successfully",
+        "database backup",
+        "backup completed",
+        "backup",
+        "database",
+        "successfully"
+      ],
+      "group": "Informational / Normal",
+      "dominant_level": "INFO",
+      "example_pattern": "database backup completed successfully",
+      "example_message": "INFO: Database backup completed successfully",
+      "name": "database backup completed successfully"
+    },
+    {
+      "cluster": 13,
+      "size": 296,
+      "top_terms": [
+        "usage approaching",
+        "usage",
+        "memory",
+        "memory usage",
+        "approaching threshold",
+        "approaching"
+      ],
+      "group": "Infrastructure issue",
+      "dominant_level": "WARNING",
+      "example_pattern": "memory usage approaching threshold on srv current",
+      "example_message": "WARNING: Memory usage approaching threshold on srv-07. Current: 413%",
+      "name": "memory usage approaching threshold on srv current"
+    },
+    {
+      "cluster": 14,
+      "size": 300,
+      "top_terms": [
+        "user",
+        "user login",
+        "login successful",
+        "login",
+        "successful user",
+        "successful"
+      ],
+      "group": "Informational / Normal",
+      "dominant_level": "INFO",
+      "example_pattern": "user login successful user id usrid",
+      "example_message": "INFO: User login successful. User ID: USR270",
+      "name": "user login successful user id usrid"
+    },
+    {
+      "cluster": 15,
+      "size": 279,
+      "top_terms": [
+        "rtgs transaction",
+        "rtgs",
+        "reason insufficient",
+        "insufficient funds",
+        "insufficient",
+        "funds"
+      ],
+      "group": "Business KPI issue",
+      "dominant_level": "ERROR",
+      "example_pattern": "rtgs transaction failed transaction id txnid reason insufficient funds",
+      "example_message": "ERROR: RTGS transaction failed. Transaction ID: TXN183. Reason: Insufficient funds",
+      "name": "rtgs transaction failed transaction id txnid reason"
+    },
+    {
+      "cluster": 16,
+      "size": 264,
+      "top_terms": [
+        "invalid",
+        "invalid account",
+        "imps",
+        "reason invalid",
+        "account",
+        "imps transaction"
+      ],
+      "group": "Business KPI issue",
+      "dominant_level": "ERROR",
+      "example_pattern": "imps transaction failed transaction id txnid reason invalid account",
+      "example_message": "ERROR: IMPS transaction failed. Transaction ID: TXN258. Reason: Invalid account",
+      "name": "imps transaction failed transaction id txnid reason"
+    }
+  ]
+}

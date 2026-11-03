@@ -1,0 +1,175 @@
+{
+  "forecasting": {
+    "setup": "15-minute averages; chronological split from provided train/test files (train 2025-10-20 00:00:00 -> 2025-10-25 14:15:00, test 2025-10-25 14:15:00 -> 2025-10-26 23:45:00)",
+    "scores": {
+      "overall_success_rate": {
+        "naive_last_value": {
+          "RMSE": 0.1066,
+          "MAE": 0.0904
+        },
+        "seasonal_naive": {
+          "RMSE": 0.1566,
+          "MAE": 0.1313
+        },
+        "holt_winters": {
+          "RMSE": 0.1099,
+          "MAE": 0.0902
+        },
+        "gradient_boosting_calendar": {
+          "RMSE": 0.1044,
+          "MAE": 0.0858
+        }
+      },
+      "avg_transaction_processing_time_ms": {
+        "naive_last_value": {
+          "RMSE": 73.4663,
+          "MAE": 59.9722
+        },
+        "seasonal_naive": {
+          "RMSE": 90.7422,
+          "MAE": 47.2556
+        },
+        "holt_winters": {
+          "RMSE": 152.393,
+          "MAE": 123.6223
+        },
+        "gradient_boosting_calendar": {
+          "RMSE": 5.6733,
+          "MAE": 4.5771
+        }
+      },
+      "cpu_utilization": {
+        "naive_last_value": {
+          "RMSE": 7.9435,
+          "MAE": 6.4762
+        },
+        "seasonal_naive": {
+          "RMSE": 9.1682,
+          "MAE": 5.0822
+        },
+        "holt_winters": {
+          "RMSE": 14.5804,
+          "MAE": 11.7876
+        },
+        "gradient_boosting_calendar": {
+          "RMSE": 0.8502,
+          "MAE": 0.6853
+        }
+      },
+      "memory_usage": {
+        "naive_last_value": {
+          "RMSE": 7.8484,
+          "MAE": 6.5114
+        },
+        "seasonal_naive": {
+          "RMSE": 8.3856,
+          "MAE": 4.3826
+        },
+        "holt_winters": {
+          "RMSE": 12.7763,
+          "MAE": 10.4941
+        },
+        "gradient_boosting_calendar": {
+          "RMSE": 0.5274,
+          "MAE": 0.4299
+        }
+      },
+      "db_connection_pool_usage": {
+        "naive_last_value": {
+          "RMSE": 7.6475,
+          "MAE": 6.4583
+        },
+        "seasonal_naive": {
+          "RMSE": 7.2517,
+          "MAE": 4.5416
+        },
+        "holt_winters": {
+          "RMSE": 11.4981,
+          "MAE": 9.4169
+        },
+        "gradient_boosting_calendar": {
+          "RMSE": 1.457,
+          "MAE": 1.1609
+        }
+      }
+    }
+  },
+  "classification": {
+    "target": "is_critical",
+    "cv_5fold": {
+      "logistic_regression": {
+        "accuracy": 1.0,
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "roc_auc": 1.0
+      },
+      "random_forest": {
+        "accuracy": 1.0,
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "roc_auc": 1.0
+      },
+      "gradient_boosting": {
+        "accuracy": 1.0,
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "roc_auc": 1.0
+      }
+    },
+    "chronological_holdout": {
+      "logistic_regression": {
+        "accuracy": 1.0,
+        "f1": 1.0,
+        "n_test": 51,
+        "n_critical_in_test": 9
+      },
+      "random_forest": {
+        "accuracy": 1.0,
+        "f1": 1.0,
+        "n_test": 51,
+        "n_critical_in_test": 9
+      },
+      "gradient_boosting": {
+        "accuracy": 1.0,
+        "f1": 1.0,
+        "n_test": 51,
+        "n_critical_in_test": 9
+      }
+    },
+    "deployed_model": "logistic_regression",
+    "feature_importance": {
+      "neft_success_rate": 1.202,
+      "application_error_rate": 1.072,
+      "db_connection_pool_usage": 0.944,
+      "memory_usage": 0.795,
+      "cpu_utilization": 0.666,
+      "avg_transaction_processing_time_ms": 0.279,
+      "network_throughput_mbps": 0.177,
+      "rtgs_success_rate": 0.065,
+      "imps_success_rate": 0.008
+    },
+    "caveat": "Scores are near-perfect because the labels follow clear thresholds (critical hours have CPU>85, memory>80, DB pool>85, error rate>=10, NEFT<90). Expect lower scores on real, messier incident labels."
+  },
+  "anomaly_detection": {
+    "isolation_forest": {
+      "precision": 0.963,
+      "recall": 1.0,
+      "f1": 0.981,
+      "accuracy": 0.994,
+      "flagged": 27,
+      "roc_auc_vs_critical_label": 1.0
+    },
+    "residual_zscore_gt4": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "accuracy": 1.0,
+      "flagged": 26,
+      "roc_auc_vs_critical_label": 1.0
+    },
+    "note": "Evaluated on the 168 hourly rows of incident_reports.csv; 26 are labelled critical. The model is trained on minute-level normal operation only, so critical hours are unseen."
+  }
+}

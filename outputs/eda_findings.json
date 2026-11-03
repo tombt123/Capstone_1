@@ -1,0 +1,166 @@
+{
+  "rows": {
+    "metrics": 10080,
+    "transactions": 4000,
+    "logs": 4991,
+    "incidents": 168
+  },
+  "missing_values_after_cleaning": 0,
+  "success_rate_summary": {
+    "neft_success_rate": {
+      "count": 10080.0,
+      "mean": 98.0,
+      "std": 1.15,
+      "min": 96.0,
+      "25%": 97.02,
+      "50%": 97.98,
+      "75%": 98.98,
+      "max": 100.0
+    },
+    "imps_success_rate": {
+      "count": 10080.0,
+      "mean": 99.01,
+      "std": 0.58,
+      "min": 98.0,
+      "25%": 98.51,
+      "50%": 99.02,
+      "75%": 99.51,
+      "max": 100.0
+    },
+    "rtgs_success_rate": {
+      "count": 10080.0,
+      "mean": 99.5,
+      "std": 0.29,
+      "min": 99.0,
+      "25%": 99.26,
+      "50%": 99.5,
+      "75%": 99.75,
+      "max": 100.0
+    },
+    "auth_success_rate": {
+      "count": 10080.0,
+      "mean": 98.96,
+      "std": 0.39,
+      "min": 96.51,
+      "25%": 98.73,
+      "50%": 98.99,
+      "75%": 99.24,
+      "max": 99.5
+    }
+  },
+  "processing_time_by_txn_type_ms": {
+    "ATM_Withdrawal": 1050.6,
+    "Card_Payment": 1052.8,
+    "IMPS": 1016.3,
+    "NEFT": 1046.2,
+    "RTGS": 1027.6,
+    "UPI": 1049.2
+  },
+  "fraud_rate_by_txn_type_pct": {
+    "ATM_Withdrawal": 4.0,
+    "Card_Payment": 4.56,
+    "IMPS": 5.24,
+    "NEFT": 5.42,
+    "RTGS": 5.98,
+    "UPI": 4.05
+  },
+  "overall_fraud_rate_pct": 4.78,
+  "data_note": "incident_reports.csv hourly rows match the minute file except during incident hours, where CPU/memory/DB-pool/error-rate spikes exist only in the incident file.",
+  "business_hours_vs_off_hours": {
+    "cpu_utilization": {
+      "false": 40.0,
+      "true": 64.3
+    },
+    "memory_usage": {
+      "false": 36.0,
+      "true": 57.9
+    },
+    "avg_transaction_processing_time_ms": {
+      "false": 113.8,
+      "true": 343.1
+    },
+    "transaction_volume_per_hour": {
+      "false": 4000.8,
+      "true": 6416.4
+    }
+  },
+  "weekday_vs_weekend_cpu": {
+    "false": 51.3,
+    "true": 43.8
+  },
+  "strongest_hourly_correlations_with_processing_time": {
+    "cpu_utilization": 1.0,
+    "memory_usage": 1.0,
+    "network_throughput_mbps": 1.0,
+    "transaction_volume_per_hour": 1.0,
+    "db_connection_pool_usage": 1.0
+  },
+  "strongest_hourly_correlations_with_neft_success": {
+    "imps_success_rate": -0.09,
+    "rtgs_success_rate": -0.09,
+    "network_throughput_mbps": -0.05,
+    "transaction_volume_per_hour": -0.05,
+    "avg_transaction_processing_time_ms": -0.05
+  },
+  "txns_overlapping_infra_window": 313,
+  "txn_processing_time_vs_infra_corr": {
+    "cpu_utilization": -0.045,
+    "memory_usage": -0.042,
+    "db_connection_pool_usage": -0.04,
+    "network_throughput_mbps": -0.043
+  },
+  "normal_vs_critical_means": {
+    "avg_transaction_processing_time_ms": {
+      "0": 198.85,
+      "1": 202.12
+    },
+    "neft_success_rate": {
+      "0": 98.04,
+      "1": 87.32
+    },
+    "application_error_rate": {
+      "0": 2.05,
+      "1": 14.54
+    },
+    "cpu_utilization": {
+      "0": 48.87,
+      "1": 89.84
+    },
+    "memory_usage": {
+      "0": 43.9,
+      "1": 85.37
+    },
+    "db_connection_pool_usage": {
+      "0": 39.28,
+      "1": 89.59
+    }
+  },
+  "hours_with_abs_z_gt_3": 8,
+  "critical_hours_total": 26,
+  "critical_hours_caught_by_z3": 8,
+  "log_level_counts": {
+    "ERROR": 2563,
+    "INFO": 1239,
+    "WARNING": 1189
+  },
+  "critical_incident_hours_by_hour_of_day": {
+    "0": 2,
+    "1": 1,
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "6": 2,
+    "8": 1,
+    "9": 1,
+    "11": 4,
+    "12": 1,
+    "13": 2,
+    "14": 1,
+    "15": 2,
+    "17": 1,
+    "19": 1,
+    "20": 2,
+    "21": 1,
+    "22": 1
+  }
+}

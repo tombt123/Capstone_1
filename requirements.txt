@@ -1,0 +1,20 @@
+# Full environment: run the training scripts, API and dashboard on one machine
+pandas==3.0.5
+numpy==2.5.3
+scikit-learn==1.9.1
+statsmodels==0.15.0
+joblib==1.6.0
+matplotlib==3.11.2
+seaborn==0.13.2
+fastapi==0.162.0
+uvicorn==0.54.0
+pydantic==2.13.5
+httpx==0.28.1
+langgraph==1.2.19
+langchain-core==1.7.4
+streamlit==1.66.1
+plotly==7.1.0
+requests==2.34.2
+# Optional - only if you want a real LLM to write the root-cause text (then set ANTHROPIC_API_KEY or OPENAI_API_KEY):
+# langchain-anthropic
+# langchain-openai
