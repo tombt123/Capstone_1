@@ -27,3 +27,5 @@ def test_api():
         assert "Critical" in rca["answer"] and rca["sources"]
         gen = c.post("/rca", json={"question": "What causes database connection pool exhaustion?"}).json()
         assert gen["intent"] == "general"
+        unk = c.post("/logs/classify", json={"message": "quantum flux capacitor overheated"}).json()
+        assert unk["known_pattern"] is False and unk["issue_group"].startswith("Unknown")

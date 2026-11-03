@@ -164,9 +164,11 @@ with tab3:
         msg = st.text_input("Log message", "ERROR: Disk I/O bottleneck detected on srv-7")
         if msg:
             res = post("/logs/classify", {"message": msg})
-            st.write(f"**{res['issue_group']}** — cluster *{res['cluster_name']}*")
-            if not res["known_pattern"]:
-                st.warning("This message is far from every known cluster – possibly a new issue type.")
+            if res["known_pattern"]:
+                st.write(f"**{res['issue_group']}** — cluster *{res['cluster_name']}* (similarity {res['similarity']:.2f})")
+            else:
+                st.warning(f"**Unknown / new pattern** – no known cluster matches (closest: *{res['closest_cluster']}*, "
+                           f"similarity {res['similarity']:.2f}). Possibly a new issue type worth investigating.")
     cl = get("/logs/clusters")
     with st.expander(f"All {cl['best_k']} clusters (silhouette {cl['silhouette']}, purity {cl['purity']})"):
         st.dataframe(pd.DataFrame(cl["clusters"])[["cluster", "group", "size", "dominant_level", "example_message"]], hide_index=True, use_container_width=True)

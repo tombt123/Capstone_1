@@ -145,12 +145,22 @@ class Telemetry:
         d = self.logs.set_index("timestamp").loc[(pd.Timestamp(start) if start else self.start):self._ts(end)]
         return d.groupby("issue_group").resample(freq).size().unstack(0).fillna(0).astype(int)
 
-    def classify_log(self, message: str) -> dict:
+    def classify_log(self, message: str, min_similarity: float = 0.5) -> dict:
+        """Assign a log line to its nearest cluster, but say "Unknown" when it does not really resemble any cluster.
+
+        Similarity = cosine between the message's TF-IDF vector and the cluster centre. A message sharing no words
+        with the training logs has an all-zero vector (similarity 0) -> Unknown. (Euclidean distance is misleading
+        here: a zero vector is 'close' to the smallest centroid.)"""
         vec, km, summ = self.log_model["vectorizer"], self.log_model["kmeans"], self.log_model["summary"]
         clean = normalize_log(message)
         X = vec.transform([clean])
-        c = int(km.predict(X)[0])
-        dist = float(np.min(km.transform(X)))
+        centres = km.cluster_centers_
+        norms = np.linalg.norm(centres, axis=1) * (np.sqrt(X.multiply(X).sum()) or 1.0)
+        sims = np.asarray(X @ centres.T).ravel() / np.where(norms == 0, 1, norms)
+        c = int(np.argmax(sims))
+        sim = float(sims[c])
+        known = sim >= min_similarity
         s = summ[c] if c in summ else summ[str(c)]
-        return {"cluster": c, "cluster_name": s["name"], "issue_group": s["group"], "normalized": clean,
-                "distance_to_centroid": round(dist, 3), "known_pattern": dist < 1.0}
+        return {"cluster": c if known else None, "cluster_name": s["name"] if known else None,
+                "issue_group": s["group"] if known else "Unknown / new pattern", "normalized": clean,
+                "similarity": round(sim, 3), "known_pattern": known, "closest_cluster": s["name"]}

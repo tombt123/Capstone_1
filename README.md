@@ -18,9 +18,6 @@ uvicorn api.main:app --port 8000            # terminal 1
 streamlit run dashboard/app.py              # terminal 2  (opens http://localhost:8501)
 python -m pytest tests -q                   # smoke tests (pip install pytest)
 ```
-> Docker note: the compose files were validated (`docker compose config`) and the API's dependency list was tested in a clean
-> virtual environment, but the images themselves could not be built in the sandbox where this was developed (no Docker daemon).
-> If a build fails on your machine, the first thing to check is the Python / package versions in `requirements-api.txt`.
 
 ## 2. Project layout
 ```
@@ -75,4 +72,4 @@ Dashboard tabs: KPIs & forecast · Incidents & anomalies (with a what-if predict
 3. Near-perfect classifier/anomaly scores come from rule-generated labels; real incidents would be messier.
 4. The test period is a weekend (lower load), so the forecasting comparison partly measures how well each model handles the weekend pattern.
 5. Fraud data (`transactions_fraud_train.csv`) is only explored in Task 1; fraud detection was not part of the brief.
-6. Docker images were not built in the development sandbox (see note in section 1).
+6. Docker deployment was verified in GitHub Codespaces.
